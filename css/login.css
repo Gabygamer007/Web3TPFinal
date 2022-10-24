@@ -1,0 +1,75 @@
+* {
+	margin:0;
+	padding:0;
+}
+
+@font-face {
+    font-family: "ninja";
+    src: url('../font/njnaruto.ttf') format("truetype");
+}
+
+html {
+	height:100%;
+	width:100%;
+	background-image:url('../img/ichiraku.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+#container {
+	display:flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+#box {
+	display:flex;
+	min-width:500px;
+	min-height:500px;
+	justify-content: center;
+	align-items: center;
+	margin-top:70px;
+	border-radius: 100%;
+	background-color:rgba(255, 102, 0, 0.8);
+	border: solid 3px orangered;
+	background-image:url('../img/seal.png');
+	background-size: 80%;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+.formbox {
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+h1 {
+	display:flex;
+	padding-top: 40px;
+	font-size: 100px;
+	color: rgb(255, 102, 0);
+	font-family: ninja;
+}
+
+#box input {
+	display:flex;
+	margin: 20px 0px;
+	padding:20px;
+	text-align: center;
+	font-size: 20px;
+	border-radius:25px;
+	opacity: 95%;
+	font-family: ninja;
+}
+
+#box button {
+	font-size: 30px;
+	width:200px;
+	height:50px;
+	border-radius: 30px;
+	margin-top:20px;
+	padding-top:5px;
+	background-color:  rgb(255,255,0);
+	font-family: ninja;
+}
