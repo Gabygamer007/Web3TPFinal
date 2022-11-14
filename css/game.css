@@ -18,7 +18,7 @@ html {
     display:flex;
 }
 
-.opponent-card-holder {
+.opponent-hand-cards {
     height:100%;
     width:35vw;
     display:flex;

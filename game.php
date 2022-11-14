@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="opponent-bar">
-        <div class="opponent-card-holder">
+        <div class="opponent-hand-cards">
             <div class="carte-cachee"></div>
             <div class="carte-cachee"></div>
             <div class="carte-cachee"></div>
@@ -23,7 +23,11 @@
             <div class="carte-cachee"></div>
             <div class="carte-cachee"></div>
         </div>
-        <div class="opponent-info"></div>
+        <div class="opponent-info">
+            <div class="opponent-health"></div>
+            <div class="opponent-user-image"></div>
+            <div class="opponent-mp"></div>
+        </div>
         <div class="opponent-card-left"></div>
     </div>
     <div class="opponent-cards">
