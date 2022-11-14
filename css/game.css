@@ -21,6 +21,7 @@ html {
 .opponent-card-holder {
     height:100%;
     width:35vw;
+    display:flex;
 }
 
 .opponent-info {
@@ -39,6 +40,14 @@ html {
     background: rgba(255, 0, 0, 0.4);
     display:flex;
     justify-content: center;
+}
+
+.carte-cachee {
+    width:12.5%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left:5px;
+    
 }
 
 .carte {

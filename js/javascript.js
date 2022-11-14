@@ -6,7 +6,7 @@ const applyStyles = iframe => {
 		fontGoogleName : "Sofia",
 		fontSize : "20px",
 		hideIcons : false,
-		inputBackgroundColor : "red",
+		inputBackgroundColor : "orange",
 		inputFontColor : "blue",
 		height : "240px",
 		memberListFontColor : "#ff00dd",
