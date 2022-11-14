@@ -1,12 +1,4 @@
 
-
-
-
-
-
-
-
-
 const applyStyles = iframe => {
 	let styles = {
 		fontColor : "#333",
