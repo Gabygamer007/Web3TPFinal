@@ -168,7 +168,7 @@ html {
     height:15%;
     margin-left:15px;
     margin-right:15px;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: bold;
     text-shadow: 2px 0 orange, -2px 0 orange, 0 2px orange, 0 -2px orange,
                1px 1px orange, -1px -1px orange, 1px -1px orange, -1px 1px orange;
@@ -302,7 +302,6 @@ html {
              1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
 
-
 .my-hand-cards {
     height:100%;
     width:80%;
@@ -320,7 +319,7 @@ html {
 
 .boutons-misc {
     height:50px;
-    margin-top:30px;
+    margin-top:10px;
     width:90%;
     border-radius: 15%;
     border: solid 1px black;

@@ -8,9 +8,24 @@
 		}
 
 		protected function executeAction() {
-            
-                
+            $data = [];
+			$type = null;
+			if (isset($_POST["PVP"]))
+				$type = "PVP";
+			else if (isset($_POST["TRAINING"]))
+				$type = "TRAINING";
+			
+			if (isset($_POST["PVP"]) or isset($_POST["TRAINING"]) ) {
+				$data["type"] = $type;
+				$data["key"] = $_SESSION["key"];
+				$result = parent::callAPI("games/auto-match", $data);
+				if ($result == "JOINED_TRAINING")
+					header("location:game.php");
+			}
+
 
 			return [];
 		}
+
+
 	}

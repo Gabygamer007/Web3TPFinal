@@ -14,8 +14,10 @@
 <body>
     <div>
         <a href="login.php"><button>Log out</button></a>
-        <a href="game.php"><button>Play</button></a>
-        <a href="game.php"><button>Practice</button></a>
+        <form action="" method="post">
+            <button type="submit" name="PVP">Play</button>
+            <button type="submit" name="TRAINING">Practice</button>
+        </form>
         
         <iframe style="width:700px;height:240px;" onload="applyStyles(this)" 
         src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION['key'] ?>"> 
