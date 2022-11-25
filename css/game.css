@@ -44,9 +44,6 @@ html {
     align-items: center;
     display:flex;
     width:33%;
-}
-
-.opponent-health-value {
     font-family: pixel;
     font-size: 60px;
     font-weight: bold;
@@ -72,9 +69,6 @@ html {
     align-items: center;
     display:flex;
     width:33%;
-}
-
-.opponent-mp-value {
     padding-top:10px;
     font-family: pixel;
     font-size: 60px;
@@ -246,30 +240,117 @@ html {
 .my-info {
     height:100%;
     width:10%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .my-health {
     height:33.3%;
-    width:100%;
+    width:75%;
+    background-image:url('../img/my-health.png');
+    background-repeat: round;
+    background-size: cover;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    display:flex;
+    font-family: pixel;
+    font-size: 60px;
+    font-weight: bold;
+    color: orangered;
 }
 
 .my-mp {
     height:33.3%;
-    width:100%;
+    width:75%;
+    background-image:url('../img/chakra.png');
+    background-repeat: round;
+    background-size: cover;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.my-mp-value {
+    padding-top:16%;
+    font-family: pixel;
+    font-size: 60px;
+    font-weight: bold;
+    color: rgb(0,255,255);
 }
 
 .my-cards-left {
     height:33.3%;
-    width:100%;
+    width:50%;
+    display:flex;
+    text-align:center;
+    background-image:url('../img/back-card.png');
+    background-repeat: round;
+    background-size: cover;
+}
+
+.my-cards-left-value {
+    width:100%;  
+    padding-top:69%;
+    font-family: pixel;
+    font-size: 30px;
+    font-weight: bold;
+    color: orange;
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+             1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
 }
 
 
 .my-hand-cards {
     height:100%;
     width:80%;
+    display:flex;
 }
 
 .my-misc {
     height:100%;
     width:10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.boutons-misc {
+    height:50px;
+    margin-top:30px;
+    width:90%;
+    border-radius: 15%;
+    border: solid 1px black;
+    font-family: pixel;
+    font-weight: bold;
+    font-size: 30px;
+    color: orange;
+    text-shadow: 2px 0 red, -2px 0 red, 0 2px red, 0 -2px red,
+             1px 1px red, -1px -1px red, 1px -1px red, -1px 1px red;
+    background-color:gray;
+}
+
+.boutons-misc:hover {
+    text-shadow: 2px 0 greenyellow, -2px 0 greenyellow, 0 2px greenyellow, 0 -2px greenyellow,
+             1px 1px greenyellow, -1px -1px greenyellow, 1px -1px greenyellow, -1px 1px greenyellow;
+}
+
+.time-remaining {
+    width:50%;
+    height:100px;
+    margin-top:25px;
+    margin-bottom: 25px;
+    display: flex;
+    background-image: url("../img/time-remaining.png");
+    background-repeat: round;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+    font-family: pixel;
+    font-weight: bold;
+    font-size: 50px;
+    color: greenyellow;
 }
