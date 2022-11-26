@@ -20,6 +20,7 @@ html {
     width:100vw;
     height: 15vh;
     display:flex;
+    background-color: rgba(255, 166, 0, 0.363);
 }
 
 .opponent-hand-cards {
@@ -124,9 +125,9 @@ html {
 .carte {
     margin-top: 10px;
     margin-bottom: 10px;
-    margin-left:25px;
-    margin-right:25px;
-    width:12%;
+    margin-left:10px;
+    margin-right:10px;
+    width:11%;
     background-image:url('../img/front-card.png');
     background-repeat: round;
     background-size: cover;
@@ -235,6 +236,7 @@ html {
     width:100vw;
     height: 30vh;
     display: flex;
+    background-color: rgba(255, 166, 0, 0.363);
 }
 
 .my-info {
@@ -246,8 +248,9 @@ html {
 }
 
 .my-health {
-    height:33.3%;
-    width:75%;
+    height:25%;
+    width:50%;
+    margin-top: 10px;
     background-image:url('../img/my-health.png');
     background-repeat: round;
     background-size: cover;
@@ -258,12 +261,14 @@ html {
     font-family: pixel;
     font-size: 60px;
     font-weight: bold;
-    color: orangered;
+    color: rgb(45, 199, 199);
 }
 
 .my-mp {
-    height:33.3%;
-    width:75%;
+    height:25%;
+    width:50%;
+    display:flex;
+    align-items: center;
     background-image:url('../img/chakra.png');
     background-repeat: round;
     background-size: cover;
@@ -274,16 +279,16 @@ html {
 }
 
 .my-mp-value {
-    padding-top:16%;
     font-family: pixel;
-    font-size: 60px;
+    font-size: 40px;
     font-weight: bold;
     color: rgb(0,255,255);
 }
 
 .my-cards-left {
-    height:33.3%;
-    width:50%;
+    height:25%;
+    width:35%;
+    margin-top:30px;
     display:flex;
     text-align:center;
     background-image:url('../img/back-card.png');

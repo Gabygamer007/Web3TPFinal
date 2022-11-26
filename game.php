@@ -15,14 +15,6 @@
 <body>
     <div class="opponent-bar">
         <div class="opponent-hand-cards">
-            <div class="carte-cachee"></div>
-            <div class="carte-cachee"></div>
-            <div class="carte-cachee"></div>
-            <div class="carte-cachee"></div>
-            <div class="carte-cachee"></div>
-            <div class="carte-cachee"></div>
-            <div class="carte-cachee"></div>
-            <div class="carte-cachee"></div>
         </div>
         <div class="opponent-info">
             <div class="opponent-health"></div>
@@ -32,7 +24,7 @@
         <div class="opponent-card-left"><div class="opponent-card-left-value"></div></div>
     </div>
     <div class="opponent-cards">
-        <div class="carte">
+        <!-- <div class="carte">
             <div class="carte-cost">10</div>
             <div class="carte-img" style="background-image: url(./img/image1-front-card.png); background-repeat: round; background-size: cover;"></div>
             <div class="carte-name">Ninja</div>
@@ -43,7 +35,7 @@
             </div>
         </div>
         <div class="carte">
-        <div class="carte-cost">8</div>
+            <div class="carte-cost">8</div>
             <div class="carte-img" style="background-image: url(./img/image2-front-card.png); background-repeat: round; background-size: cover;"></div>
             <div class="carte-name">Ninja</div>
             <div class="carte-desc">Stealth: At the start of your turn, give +1 HP to a random friendly minion</div>
@@ -56,10 +48,10 @@
         <div class="carte"></div>
         <div class="carte"></div>
         <div class="carte"></div>
-        <div class="carte"></div>
+        <div class="carte"></div> -->
     </div>
     <div class="my-cards">
-        <div class="carte">
+        <!-- <div class="carte">
             <div class="carte-cost">10</div>
             <div class="carte-img" style="background-image: url(./img/image3-front-card.png); background-repeat: round; background-size: cover;"></div>
             <div class="carte-name">Ninja</div>
@@ -83,7 +75,8 @@
         <div class="carte"></div>
         <div class="carte"></div>
         <div class="carte"></div>
-        <div class="carte"></div></div>
+        <div class="carte"></div> -->
+    </div>
     <div class="my-bar">
         <div class="my-info">
             <div class="my-health"></div>
@@ -91,7 +84,7 @@
             <div class="my-cards-left"><div class="my-cards-left-value"></div></div>
         </div>
         <div class="my-hand-cards">
-            <div class="carte">
+            <!-- <div class="carte">
                 <div class="carte-cost">10</div>
                 <div class="carte-img" style="background-image: url(./img/image4-front-card.png); background-repeat: round; background-size: cover;"></div>
                 <div class="carte-name">Ninja</div>
@@ -100,7 +93,7 @@
                     <div class="carte-health">1</div>
                     <div class="carte-atk">1</div>
                 </div>
-            </div>
+            </div> -->
         </div>
         <div class="my-misc">
             <Button class="boutons-misc" id="hero_power">Hero Power</Button>
