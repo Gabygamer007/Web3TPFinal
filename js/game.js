@@ -61,6 +61,12 @@ const state = () => {
                 if (data["yourTurn"]) {
                     document.querySelector(".time-remaining").innerHTML = data["remainingTurnTime"];
                     document.querySelector(".time-remaining").style.color = "greenyellow";
+                    if (data["mp"] >= 2 && data["heroPowerAlreadyUsed"] == false) {
+                        bouton_hero_power.style.backgroundColor = "rgb(0, 100, 0)"
+                    }
+                    else {
+                        bouton_hero_power.style.backgroundColor = "gray"
+                    }
                 }
                 else {
                     document.querySelector(".time-remaining").innerHTML = data["remainingTurnTime"];
@@ -130,7 +136,7 @@ function creerCartes(div, cartes, data) {
         div_img.style.backgroundSize = "cover";
         let div_name = document.createElement("div");
         div_name.className = "carte-name";
-        div_name.innerHTML = "Ninja";
+        div_name.innerHTML = "Shikamaru Nara";
         let div_desc = document.createElement("div");
         div_desc.className = "carte-desc";
 
@@ -160,6 +166,7 @@ function creerCartes(div, cartes, data) {
         }
 
 
+
         div_stats.append(div_health);
         div_stats.append(div_atk);
         div_carte.append(div_cost);
@@ -171,15 +178,27 @@ function creerCartes(div, cartes, data) {
         let uid = cartes[carte]["uid"];
 
         if (div == document.querySelector(".my-hand-cards")) {
-          
+            if (cartes[carte]["cost"] <= data["mp"]) {
+                div_name.style.textShadow = 
+                "2px 0 yellowgreen, -2px 0 yellowgreen, 0 2px yellowgreen, 0 -2px yellowgreen, 1px 1px yellowgreen, -1px -1px yellowgreen, 1px -1px yellowgreen, -1px 1px yellowgreen";
+            }
+            else {
+
+            }
             div_carte.onclick = () => {
                 actions("PLAY", uid, null);
             }
         }
         else if (div == document.querySelector(".my-cards")) {
+            if (cartes[carte]["state"] == "IDLE") {
+                div_name.style.textShadow = 
+                "2px 0 yellowgreen, -2px 0 yellowgreen, 0 2px yellowgreen, 0 -2px yellowgreen, 1px 1px yellowgreen, -1px -1px yellowgreen, 1px -1px yellowgreen, -1px 1px yellowgreen";
+            }
             div_carte.onclick = () => {
                 attack_card_uid = uid;
             }
+            if (uid == attack_card_uid)
+                div_carte.style.boxShadow = "0px 0px 40px 20px #0ff";
         }
         else if (div == document.querySelector(".opponent-cards")){
             div_carte.onclick = () => {
