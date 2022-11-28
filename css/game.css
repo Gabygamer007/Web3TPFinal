@@ -30,6 +30,20 @@ html {
     background-size: cover;
 }
 
+.game-won {
+    height: 100vh;
+    width: 100vw;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-family: pixel;
+    font-size: 60px;
+    font-weight: bold;
+    background-image: url('../img/you-won.png');
+    background-repeat: round;
+    background-size: cover;
+}
+
 .opponent-bar {
     width:100vw;
     height: 15vh;

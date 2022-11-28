@@ -47,6 +47,11 @@ const state = () => {
                 document.querySelector('body').className = "game-lost";
                 setTimeout(() => { location.href = "lobby.php"; }, 5000);
             }
+            else if (data == "LAST_GAME_WON") {
+                document.querySelector('body').innerHTML = 'YOU WON ! :)';
+                document.querySelector('body').className = "game-won";
+                setTimeout(() => { location.href = "lobby.php"; }, 5000);
+            }
             else if (data != "WAITING") {
                 document.querySelector(".my-health").innerHTML = data["hp"];
                 document.querySelector(".my-mp-value").innerHTML = data["mp"];
@@ -69,6 +74,7 @@ const state = () => {
                     }
                 }
                 else {
+                    attack_card_uid = "";
                     document.querySelector(".time-remaining").innerHTML = data["remainingTurnTime"];
                     document.querySelector(".time-remaining").style.color = "red";
                 }
@@ -176,40 +182,43 @@ function creerCartes(div, cartes, data) {
         div_carte.append(div_stats);
 
         let uid = cartes[carte]["uid"];
+        if (data["yourTurn"] == true) {
+            if (div == document.querySelector(".my-hand-cards")) {
+                if (cartes[carte]["cost"] <= data["mp"]) {
+                    div_name.style.textShadow =
+                        "2px 0 yellowgreen, -2px 0 yellowgreen, 0 2px yellowgreen, 0 -2px yellowgreen, 1px 1px yellowgreen, -1px -1px yellowgreen, 1px -1px yellowgreen, -1px 1px yellowgreen";
+                }
+                else {
 
-        if (div == document.querySelector(".my-hand-cards")) {
-            if (cartes[carte]["cost"] <= data["mp"]) {
-                div_name.style.textShadow = 
-                "2px 0 yellowgreen, -2px 0 yellowgreen, 0 2px yellowgreen, 0 -2px yellowgreen, 1px 1px yellowgreen, -1px -1px yellowgreen, 1px -1px yellowgreen, -1px 1px yellowgreen";
+                }
+                div_carte.onclick = () => {
+                    actions("PLAY", uid, null);
+                }
             }
-            else {
+            else if (div == document.querySelector(".my-cards")) {
+                if (cartes[carte]["state"] == "IDLE") {
+                    if (uid == attack_card_uid)
+                        div_carte.style.boxShadow = "0px 0px 40px 20px #0ff";
+                    div_name.style.textShadow =
+                        "2px 0 yellowgreen, -2px 0 yellowgreen, 0 2px yellowgreen, 0 -2px yellowgreen, 1px 1px yellowgreen, -1px -1px yellowgreen, 1px -1px yellowgreen, -1px 1px yellowgreen";
+                }
+                div_carte.onclick = () => {
+                    attack_card_uid = uid;
+                }
 
             }
-            div_carte.onclick = () => {
-                actions("PLAY", uid, null);
-            }
-        }
-        else if (div == document.querySelector(".my-cards")) {
-            if (cartes[carte]["state"] == "IDLE") {
-                div_name.style.textShadow = 
-                "2px 0 yellowgreen, -2px 0 yellowgreen, 0 2px yellowgreen, 0 -2px yellowgreen, 1px 1px yellowgreen, -1px -1px yellowgreen, 1px -1px yellowgreen, -1px 1px yellowgreen";
-            }
-            div_carte.onclick = () => {
-                attack_card_uid = uid;
-            }
-            if (uid == attack_card_uid)
-                div_carte.style.boxShadow = "0px 0px 40px 20px #0ff";
-        }
-        else if (div == document.querySelector(".opponent-cards")){
-            div_carte.onclick = () => {
-                if (attack_card_uid != "") {
-                    let target_card_uid = uid;
-                    actions("ATTACK", attack_card_uid, target_card_uid);
-                    attack_card_uid = "";
+            else if (div == document.querySelector(".opponent-cards")) {
+                div_carte.onclick = () => {
+                    if (attack_card_uid != "") {
+                        let target_card_uid = uid;
+                        actions("ATTACK", attack_card_uid, target_card_uid);
+                        attack_card_uid = "";
+                    }
                 }
             }
         }
-        
+
+
         div.append(div_carte);
     }
 
