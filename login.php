@@ -10,6 +10,19 @@
     <link href="css/login.css" rel="stylesheet" >
 </head>
 <body>
+    <div class="invalid-password" <?php 
+        if ($data["invalid_password"] == true) {
+            ?>
+            style="opacity: 100%"
+            <?php
+        }
+        else {
+            ?>
+            style="opacity: 0%"
+            <?php
+        }
+        ?>
+    >Mot de passe ou nom d'utilisateur invalide</div>
     
     <div id="container">
         <h1>Magix</h1>

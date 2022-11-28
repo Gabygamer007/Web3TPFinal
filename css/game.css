@@ -16,6 +16,20 @@ html {
     src: url('../font/VT323.ttf') format("truetype");
 }
 
+.game-lost {
+    height: 100vh;
+    width: 100vw;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-family: pixel;
+    font-size: 60px;
+    font-weight: bold;
+    background-image: url('../img/you-lost.png');
+    background-repeat: round;
+    background-size: cover;
+}
+
 .opponent-bar {
     width:100vw;
     height: 15vh;
@@ -55,6 +69,15 @@ html {
     width:33%;
     margin-left:5%;
     margin-right:5%;
+    display:flex;
+    justify-content: center;
+    align-items:flex-end;
+    font-family: pixel;
+    font-size: 30px;
+    font-weight: bold;
+    color: red;
+    text-shadow: 2px 0 orange, -2px 0 orange, 0 2px orange, 0 -2px orange,
+               1px 1px orange, -1px -1px orange, 1px -1px orange, -1px 1px orange;
     border-radius: 100%;
     border: solid 3px black;
     background-image:url('../img/sasuke.png');
@@ -112,7 +135,7 @@ html {
 }
 
 .carte-cachee {
-    width:12.5%;
+    width:70px;
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left:5px;
@@ -127,6 +150,7 @@ html {
     margin-bottom: 10px;
     margin-left:10px;
     margin-right:10px;
+    height: 230px;
     width:11%;
     background-image:url('../img/front-card.png');
     background-repeat: round;
@@ -308,9 +332,10 @@ html {
 }
 
 .my-hand-cards {
-    height:100%;
+    height:250px;
     width:80%;
     display:flex;
+    justify-content: center;
 }
 
 .my-misc {

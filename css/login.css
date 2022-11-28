@@ -16,6 +16,11 @@ html {
 	background-repeat: no-repeat;
 }
 
+body {
+	display:flex;
+	justify-content: center;
+}
+
 #container {
 	display:flex;
 	align-items: center;
@@ -72,4 +77,22 @@ h1 {
 	padding-top:5px;
 	background-color:  rgb(255,255,0);
 	font-family: ninja;
+}
+
+.invalid-password {
+	width:250px;
+	height:125px;
+	display:flex;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	position: absolute;
+	transform: translateY(80vh);
+	background-color:rgb(247, 119, 125);
+	border: solid 3px rgb(255, 0, 0);
+	opacity: 0%;
+	font-size: 20px;
+    font-weight: bold;
+	font-family: ninja;
+	color: red;
 }

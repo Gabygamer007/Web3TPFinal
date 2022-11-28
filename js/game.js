@@ -1,12 +1,18 @@
 let bouton_surrender = document.querySelector("#surrender");
 let bouton_hero_power = document.querySelector("#hero_power");
 let bouton_end_turn = document.querySelector("#end_turn");
+let attack_card_uid = "";
+let hero_ennemi = document.querySelector(".opponent-user-image");
 
-
+hero_ennemi.onclick = () => {
+    if (attack_card_uid != "") {
+        actions("ATTACK", attack_card_uid, 0);
+        attack_card_uid = "";
+    }
+}
 
 bouton_surrender.onclick = () => {
     actions("SURRENDER", null, null);
-    location.href = "lobby.php";
 }
 
 bouton_hero_power.onclick = () => {
@@ -26,7 +32,22 @@ const state = () => {
         .then(data => {
             console.log(data); // contient les cartes/état du jeu.
 
-            if (data != "WAITING") {
+            if (data == "WAITING") {
+                document.querySelector(".my-health").innerHTML = "waiting";
+                document.querySelector(".my-mp-value").innerHTML = "waiting";
+                document.querySelector(".my-cards-left-value").innerHTML = "waiting";
+
+
+                document.querySelector(".opponent-health").innerHTML = "waiting";
+                document.querySelector(".opponent-mp").innerHTML = "waiting";
+                document.querySelector(".opponent-card-left-value").innerHTML = "waiting";
+            }
+            else if (data == "LAST_GAME_LOST") {
+                document.querySelector('body').innerHTML = 'YOU LOST :(';
+                document.querySelector('body').className = "game-lost";
+                setTimeout(() => { location.href = "lobby.php"; }, 5000);
+            }
+            else if (data != "WAITING") {
                 document.querySelector(".my-health").innerHTML = data["hp"];
                 document.querySelector(".my-mp-value").innerHTML = data["mp"];
                 document.querySelector(".my-cards-left-value").innerHTML = data["remainingCardsCount"];
@@ -35,6 +56,7 @@ const state = () => {
                 document.querySelector(".opponent-health").innerHTML = data["opponent"]["hp"];
                 document.querySelector(".opponent-mp").innerHTML = data["opponent"]["mp"];
                 document.querySelector(".opponent-card-left-value").innerHTML = data["opponent"]["remainingCardsCount"];
+                document.querySelector(".opponent-user-image").innerHTML = data["opponent"]["username"];
 
                 if (data["yourTurn"]) {
                     document.querySelector(".time-remaining").innerHTML = data["remainingTurnTime"];
@@ -47,24 +69,26 @@ const state = () => {
 
                 let cartes_cachees_opponent = document.querySelector(".opponent-hand-cards");
                 cartes_cachees_opponent.innerHTML = "";
-                let carte_cachee_div = document.createElement("div");
-                carte_cachee_div.className = "carte-cachee";
                 for (i = 0; i < data["opponent"]["handSize"]; i++) {
+                    let carte_cachee_div = document.createElement("div");
+                    carte_cachee_div.className = "carte-cachee";
                     cartes_cachees_opponent.appendChild(carte_cachee_div);
                 }
-            }
 
-            let div_ma_main = document.querySelector(".my-hand-cards");
-            div_ma_main.innerHTML = "";
-            let div_son_board = document.querySelector(".opponent-cards");
-            div_son_board.innerHTML = "";
-            let div_mon_board = document.querySelector(".my-cards");
-            div_mon_board.innerHTML = "";
-            creerCartes(div_ma_main, data["hand"], data);
-            if (data["opponent"] != null) {
-                creerCartes(div_son_board, data["opponent"]["board"], data);
+                let div_ma_main = document.querySelector(".my-hand-cards");
+                div_ma_main.innerHTML = "";
+                let div_son_board = document.querySelector(".opponent-cards");
+                div_son_board.innerHTML = "";
+                let div_mon_board = document.querySelector(".my-cards");
+                div_mon_board.innerHTML = "";
+                creerCartes(div_ma_main, data["hand"], data);
+                if (data["opponent"] != null) {
+                    creerCartes(div_son_board, data["opponent"]["board"], data);
+                }
+                creerCartes(div_mon_board, data["board"], data);
             }
-            creerCartes(div_mon_board, data["board"], data);
+            console.log(attack_card_uid);
+
 
 
             setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
@@ -144,8 +168,30 @@ function creerCartes(div, cartes, data) {
         div_carte.append(div_desc);
         div_carte.append(div_stats);
 
-        div.append(div_carte);
+        let uid = cartes[carte]["uid"];
 
+        if (div == document.querySelector(".my-hand-cards")) {
+          
+            div_carte.onclick = () => {
+                actions("PLAY", uid, null);
+            }
+        }
+        else if (div == document.querySelector(".my-cards")) {
+            div_carte.onclick = () => {
+                attack_card_uid = uid;
+            }
+        }
+        else if (div == document.querySelector(".opponent-cards")){
+            div_carte.onclick = () => {
+                if (attack_card_uid != "") {
+                    let target_card_uid = uid;
+                    actions("ATTACK", attack_card_uid, target_card_uid);
+                    attack_card_uid = "";
+                }
+            }
+        }
+        
+        div.append(div_carte);
     }
 
 

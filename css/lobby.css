@@ -15,3 +15,8 @@ html {
 	background-size: cover;
 	background-repeat: no-repeat;
 }
+
+.deck {
+	height:300px;
+	width:300px;
+}

@@ -8,6 +8,7 @@
 		}
 
 		protected function executeAction() {
+            $invalid_password = "";
             if (!empty($_POST["username"]) || !empty($_POST["password"])) {
                 $data = [];
                 $data["username"] = $_POST["username"];
@@ -16,6 +17,7 @@
                 $result = parent::callAPI("signin", $data);
 
                 if ($result == "INVALID_USERNAME_PASSWORD") {
+                    $invalid_password = true;
                 }
                 else {
                 	// Pour voir les informations retournées : var_dump($result);exit;
@@ -24,6 +26,6 @@
                     header("location:lobby.php");
                 }
             }
-			return [];
+			return compact("invalid_password");
 		}
 	}

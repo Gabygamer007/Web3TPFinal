@@ -14,6 +14,11 @@
 				$type = "PVP";
 			else if (isset($_POST["TRAINING"]))
 				$type = "TRAINING";
+			else if (isset($_POST["LOG_OUT"])) {
+				$data["key"] = $_SESSION["key"];
+				$result = parent::callAPI("signout", $data);
+				header("location:login.php");
+			}
 			
 			if (isset($_POST["PVP"]) or isset($_POST["TRAINING"]) ) {
 				$data["type"] = $type;
@@ -22,6 +27,7 @@
 				if ($result == "JOINED_TRAINING")
 					header("location:game.php");
 			}
+			
 
 
 			return [];
