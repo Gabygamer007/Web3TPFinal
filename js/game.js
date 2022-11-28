@@ -122,6 +122,20 @@ function creerCartes(div, cartes, data) {
         div_health.innerHTML = cartes[carte]["hp"];
         div_atk.innerHTML = cartes[carte]["atk"];
 
+        if (cartes[carte]["mechanics"].includes("Taunt")) {
+            div_desc.style.backgroundImage = "url(./img/taunt.png)";
+            div_desc.style.backgroundRepeat = "no-repeat";
+            div_desc.style.backgroundSize = "40px";
+            div_desc.style.backgroundPosition = "center";
+        }
+        else if (cartes[carte]["mechanics"].includes("Stealth")) {
+            div_desc.style.backgroundImage = "url(./img/stealth.png)";
+            div_desc.style.backgroundRepeat = "no-repeat";
+            div_desc.style.backgroundSize = "40px";
+            div_desc.style.backgroundPosition = "center";
+        }
+
+
         div_stats.append(div_health);
         div_stats.append(div_atk);
         div_carte.append(div_cost);
