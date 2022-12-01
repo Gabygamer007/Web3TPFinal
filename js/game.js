@@ -131,18 +131,23 @@ function actions(type, uid, targetuid) {
 
 function creerCartes(div, cartes, data) {
     for (carte in cartes) {
+        let id = cartes[carte]["id"]
+
         let div_carte = document.createElement("div");
         div_carte.className = "carte";
         let div_cost = document.createElement("div");
         div_cost.className = "carte-cost";
         let div_img = document.createElement("div");
         div_img.className = "carte-img";
-        div_img.style.backgroundImage = "url(./img/image4-front-card.png)";
+        if (1 <= id <= 2)
+            div_img.style.backgroundImage = "url(./img/images_persos/perso-"+id+".png)";
+        else
+            div_img.style.backgroundImage = "url(./img/images_persos/perso-0.png)";
         div_img.style.backgroundRepeat = "round";
         div_img.style.backgroundSize = "cover";
         let div_name = document.createElement("div");
         div_name.className = "carte-name";
-        div_name.innerHTML = "Shikamaru Nara";
+        div_name.innerHTML = dictNoms[id];
         let div_desc = document.createElement("div");
         div_desc.className = "carte-desc";
 
@@ -188,9 +193,6 @@ function creerCartes(div, cartes, data) {
                     div_name.style.textShadow =
                         "2px 0 yellowgreen, -2px 0 yellowgreen, 0 2px yellowgreen, 0 -2px yellowgreen, 1px 1px yellowgreen, -1px -1px yellowgreen, 1px -1px yellowgreen, -1px 1px yellowgreen";
                 }
-                else {
-
-                }
                 div_carte.onclick = () => {
                     actions("PLAY", uid, null);
                 }
@@ -198,7 +200,7 @@ function creerCartes(div, cartes, data) {
             else if (div == document.querySelector(".my-cards")) {
                 if (cartes[carte]["state"] == "IDLE") {
                     if (uid == attack_card_uid)
-                        div_carte.style.boxShadow = "0px 0px 40px 20px #0ff";
+                        div_carte.style.boxShadow = "0px 0px 40px 10px #0ff";
                     div_name.style.textShadow =
                         "2px 0 yellowgreen, -2px 0 yellowgreen, 0 2px yellowgreen, 0 -2px yellowgreen, 1px 1px yellowgreen, -1px -1px yellowgreen, 1px -1px yellowgreen, -1px 1px yellowgreen";
                 }
@@ -223,4 +225,109 @@ function creerCartes(div, cartes, data) {
     }
 
 
+}
+
+let dictNoms = {
+    0: "Ninja",
+    1: "Leaf Ninja",
+    2: "Choji Akimichi",
+    3: "Fukasaku and Shima",
+    4: "Chiriku the Monk",
+    5: "Mifune Samurai",
+    6: "Anko Mitarashi",
+    7: "Temari",
+    8: "Neji Hyuga",
+    9: "Ameyuri Ringo",
+    10: "Kurotsuchi",
+    11: "Akatsuchi",
+    12: "Kiba Inuzuka",
+    13: "Rock Lee",
+    14: "Dan Kato",
+    15: "Hanzo of the Salamander",
+    16: "Konan",
+    17: "Yugito Nii",
+    18: "Tobirama Senju",
+    19: "Omoi",
+    20: "Kushina Uzumaki",
+    21: "Kakuzu",
+    22: "Darui",
+    23: "Chiyo",
+    24: "Orochimaru",
+    25: "Kakashi Hatake",
+    26: "Jugo",
+    27: "Indra Otsutsuki",
+    28: "Ginkaku and Kinkaku",
+    29: "Itachi Uchiha",
+    30: "Naruto Uzumaki",
+    31: "Hashirama Senju",
+    32: "Madara Uchiha",
+    33: "Obito Uchiha",
+    34: "Rin Nohara",
+    35: "Yagura Karatachi",
+    36: "Hamura Otsutsuki",
+    37: "Zabuza Momochi",
+    38: "Mei Terumi",
+    39: "Deidara",
+    40: "Pakura",
+    41: "A",
+    42: "Rasa",
+    43: "Asura Otsutsuki",
+    44: "C",
+    45: "Berserk Gyuki",
+    46: "Might Guy",
+    47: "Shikamaru Nara",
+    48: "Yamato",
+    49: "Jiraiya",
+    50: "Mu",
+    51: "Kimimaro",
+    52: "Iruka Umino",
+    53: "Nagato Uzumaki",
+    54: "Pain",
+    55: "Roshi",
+    56: "Shino Aburame",
+    57: "Shisui Uchiha",
+    58: "Killer B",
+    59: "Haku",
+    60: "Tenten",
+    61: "Chojuro",
+    62: "Sasuke Uchiha",
+    63: "Hiashi Hyuga",
+    64: "Kaguya Otsutsuki",
+    65: "Hidan",
+    66: "Kankuro",
+    67: "Karin Uzumaki",
+    68: "A",
+    69: "Sakura Haruno",
+    70: "Chino",
+    71: "Kidomaru",
+    72: "Sai",
+    73: "Kurenai Sarutobi",
+    74: "Utakata",
+    75: "Sakon and Ukon",
+    76: "Tsunade Senju",
+    77: "Tayuya",
+    78: "Shikaku Nara",
+    79: "Jirobo",
+    80: "Fuguki Suikazan",
+    81: "Danzo Shimura",
+    82: "Mangetsu Hozuki",
+    83: "Kushimaru Kuriarare",
+    84: "Gengetsu Hozuki",
+    85: "Shizune",
+    86: "Onoki",
+    87: "Minato Namikaze",
+    88: "Sakumo Hatake",
+    89: "Suigetsu Hozuki",
+    90: "Jinpachi Munashi",
+    91: "Fu",
+    92: "Hagoromo Otsutsuki",
+    93: "Hinata Hyuga",
+    94: "Sasori",
+    95: "Jinin Akebino",
+    96: "Hiruzen Sarutobi",
+    97: "Ino Yamanaka",
+    98: "Tobi",
+    99: "Gaara",
+    100: "Kisame Hoshigaki",
+    101: "Ao"
 }

@@ -197,6 +197,7 @@ html {
     height:10%;
     margin-top:2%;
     margin-left:15px;
+    font-size:15px;
     margin-right:15px;
     text-shadow: 2px 0 red, -2px 0 red, 0 2px red, 0 -2px red,
                1px 1px red, -1px -1px red, 1px -1px red, -1px 1px red;
