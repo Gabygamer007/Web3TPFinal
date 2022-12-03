@@ -23,6 +23,7 @@
                 	// Pour voir les informations retournées : var_dump($result);exit;
                 	$key = $result->key;
                     $_SESSION["key"] = $key;
+                    $_SESSION["visibility"] = CommonAction::$VISIBILITY_MEMBER;
                     header("location:lobby.php");
                 }
             }

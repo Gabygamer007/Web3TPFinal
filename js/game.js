@@ -98,6 +98,13 @@ const state = () => {
                     creerCartes(div_son_board, data["opponent"]["board"], data);
                 }
                 creerCartes(div_mon_board, data["board"], data);
+
+                let div_erreurs = document.createElement("div");
+                div_erreurs.className = "message_erreur";
+                div_erreurs.append("Pas assez d'energie")
+                div_mon_board.append(div_erreurs)
+
+
             }
             console.log(attack_card_uid);
 
@@ -139,7 +146,7 @@ function creerCartes(div, cartes, data) {
         div_cost.className = "carte-cost";
         let div_img = document.createElement("div");
         div_img.className = "carte-img";
-        if (1 <= id <= 2)
+        if (1 <= id <= 101)
             div_img.style.backgroundImage = "url(./img/images_persos/perso-"+id+".png)";
         else
             div_img.style.backgroundImage = "url(./img/images_persos/perso-0.png)";
@@ -176,8 +183,6 @@ function creerCartes(div, cartes, data) {
             div_desc.style.backgroundPosition = "center";
         }
 
-
-
         div_stats.append(div_health);
         div_stats.append(div_atk);
         div_carte.append(div_cost);
@@ -205,7 +210,10 @@ function creerCartes(div, cartes, data) {
                         "2px 0 yellowgreen, -2px 0 yellowgreen, 0 2px yellowgreen, 0 -2px yellowgreen, 1px 1px yellowgreen, -1px -1px yellowgreen, 1px -1px yellowgreen, -1px 1px yellowgreen";
                 }
                 div_carte.onclick = () => {
-                    attack_card_uid = uid;
+                    if (uid == attack_card_uid)
+                        attack_card_uid = "";
+                    else
+                        attack_card_uid = uid;
                 }
 
             }
@@ -219,8 +227,6 @@ function creerCartes(div, cartes, data) {
                 }
             }
         }
-
-
         div.append(div_carte);
     }
 

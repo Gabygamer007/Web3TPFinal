@@ -4,7 +4,7 @@
 	class LobbyAction extends CommonAction {
 		
 		public function __construct() {
-			parent::__construct(CommonAction::$VISIBILITY_PUBLIC);
+			parent::__construct(CommonAction::$VISIBILITY_MEMBER);
 		}
 
 		protected function executeAction() {
@@ -17,6 +17,7 @@
 			else if (isset($_POST["LOG_OUT"])) {
 				$data["key"] = $_SESSION["key"];
 				$result = parent::callAPI("signout", $data);
+				$_SESSION["visibility"] = CommonAction::$VISIBILITY_PUBLIC;
 				header("location:login.php");
 			}
 			
