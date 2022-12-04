@@ -3,6 +3,9 @@ let bouton_hero_power = document.querySelector("#hero_power");
 let bouton_end_turn = document.querySelector("#end_turn");
 let attack_card_uid = "";
 let hero_ennemi = document.querySelector(".opponent-user-image");
+let div_erreurs = document.createElement("div");
+div_erreurs.className = "message_erreur";
+let nb_secs = 0;
 
 hero_ennemi.onclick = () => {
     if (attack_card_uid != "") {
@@ -99,16 +102,18 @@ const state = () => {
                 }
                 creerCartes(div_mon_board, data["board"], data);
 
-                let div_erreurs = document.createElement("div");
-                div_erreurs.className = "message_erreur";
-                div_erreurs.append("Pas assez d'energie")
-                div_mon_board.append(div_erreurs)
+                div_mon_board.append(div_erreurs);
+
+                if (nb_secs == 3) {// à chaque 3 secondes
+                    nb_secs = 0;
+                    div_erreurs.innerHTML = "";
+                }
 
 
             }
             console.log(attack_card_uid);
 
-
+            nb_secs += 1;
 
             setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
         })
@@ -125,6 +130,7 @@ function actions(type, uid, targetuid) {
     formData.append("type", type);
     formData.append("uid", uid);
     formData.append("targetuid", targetuid);
+    let div_erreurs = document.querySelector(".message_erreur");
 
     fetch("ajax-actions.php", {
         method: "POST",
@@ -132,6 +138,64 @@ function actions(type, uid, targetuid) {
     })
         .then(response => response.json())
         .then(data => {
+            let div_template = document.createElement("p");
+            if (data == "INVALID_KEY") {
+                div_template.innerHTML = "Clé invalide";
+                div_erreurs.append(div_template);
+            }
+            else if (data == "INVALID_ACTION") {
+                div_template.innerHTML = "Action invalide";
+                div_erreurs.append(div_template);
+            }
+            else if (data == "ACTION_IS_NOT_AN_OBJECT") {
+                div_template.innerHTML = "Mauvaise structure de données";
+                div_erreurs.append(div_template);
+            }
+            else if (data == "NOT_ENOUGH_ENERGY") {
+                div_template.innerHTML = "Pas assez d'énergie";
+                div_erreurs.append(div_template);
+            }
+            else if (data == "BOARD_IS_FULL") {
+                div_template.innerHTML = "Pas assez de place pour la carte";
+                div_erreurs.append(div_template);
+            }
+            else if (data == "CARD_NOT_IN_HAND") {
+                div_template.innerHTML = "La carte n’est pas dans votre main";
+                div_erreurs.append(div_template);
+            }
+            else if (data == "CARD_IS_SLEEPING") {
+                div_template.innerHTML = "Carte ne peut être jouée ce tour-ci";
+                div_erreurs.append(div_template);
+            }
+            else if (data == "MUST_ATTACK_TAUNT_FIRST") {
+                div_template.innerHTML = "Vous devez attaquer les carte 'taunt' d'abord";
+                div_erreurs.append(div_template);
+            }
+            else if (data == "OPPONENT_CARD_NOT_FOUND") {
+                div_template.innerHTML = "La carte attaquée n’est pas présente sur le jeu";
+                div_erreurs.append(div_template);
+            }
+            else if (data == "OPPONENT_CARD_HAS_STEALTH") {
+                div_template.innerHTML = "La carte ne peut être attaquée directement tant qu’elle possède « stealth »";
+                div_erreurs.append(div_template);
+            }
+            else if (data == "CARD_NOT_FOUND") {
+                div_template.innerHTML = "La carte cherchée (uid) n’est pas présente";
+                div_erreurs.append(div_template);
+            }
+            else if (data == "ERROR_PROCESSING_ACTION") {
+                div_template.innerHTML = "Erreur interne, ne devrait pas se produire";
+                div_erreurs.append(div_template);
+            }
+            else if (data == "INTERNAL_ACTION_ERROR") {
+                div_template.innerHTML = "Autre erreur interne, ne devrait pas se produire";
+                div_erreurs.append(div_template);
+            }
+            else if (data == "HERO_POWER_ALREADY_USED") {
+                div_template.innerHTML = "Pouvoir déjà utilisé pour ce tour";
+                div_erreurs.append(div_template);
+            }
+
             console.log(data);
         })
 }

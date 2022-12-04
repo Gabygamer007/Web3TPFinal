@@ -407,7 +407,9 @@ html {
     font-family: pixel;
     text-align: left;
     font-weight: bold;
-    font-size: 30px;
+    font-size: 25px;
     color: red;
     position: absolute;
+    text-shadow: 2px 0 white, -2px 0 white, 0 2px white, 0 -2px white,
+             1px 1px white, -1px -1px white, 1px -1px white, -1px 1px white;
 }
