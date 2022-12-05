@@ -28,6 +28,8 @@
 				$result = parent::callAPI("games/auto-match", $data);
 				if ($result == "JOINED_TRAINING")
 					header("location:game.php");
+				if ($result == "JOINED_PVP")
+					header("location:game.php");
 			}
 			
 			return [];

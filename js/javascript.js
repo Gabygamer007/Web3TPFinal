@@ -1,3 +1,4 @@
+//window.addEventListener
 
 const applyStyles = iframe => {
 	let styles = {
@@ -16,4 +17,10 @@ const applyStyles = iframe => {
 	setTimeout(() => {
 		iframe.contentWindow.postMessage(JSON.stringify(styles), "*");	
     }, 100);
+}
+
+const effacer_valeurs = () => {
+	let div = document.createElement("p");
+	div.innerHTML = "allo";
+	document.querySelector(".container").append(div);
 }

@@ -26,7 +26,7 @@ html {
 
 button {
 	font-size: 30px;
-	width:300px;
+	width:350px;
 	height:50px;
 	background-color:  orange;
 	background-image: url('../img/scroll.png');
@@ -48,4 +48,11 @@ button {
 	display:flex;
 	height:100%;
 	align-items: flex-end;
+	justify-content: center;
+}
+
+.bouton_cartes {
+	display: flex; 
+	width:100;
+	justify-content: center;
 }

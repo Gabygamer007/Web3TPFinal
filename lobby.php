@@ -18,9 +18,12 @@
             <div class="div-boutons">
                 <button type="submit" name="PVP">Play</button>
                 <button type="submit" name="TRAINING">Practice</button>
-                
             </div>
         </form>
+        <div class="bouton_cartes">
+            <a href="cartes.php"><button>Cartes populaires</button></a>
+        </div>
+        
 
         <div class="div-iframe">
         <iframe style="width:700px;height:240px;" onload="applyStyles(this)" 

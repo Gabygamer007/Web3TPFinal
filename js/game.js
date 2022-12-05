@@ -9,31 +9,31 @@ let nb_secs = 0;
 
 hero_ennemi.onclick = () => {
     if (attack_card_uid != "") {
-        actions("ATTACK", attack_card_uid, 0);
+        activity("ATTACK", null, attack_card_uid, 0);
         attack_card_uid = "";
     }
 }
 
 bouton_surrender.onclick = () => {
-    actions("SURRENDER", null, null);
+    activity("SURRENDER", 111, null, null);
 }
 
 bouton_hero_power.onclick = () => {
-    actions("HERO_POWER", null, null);
+    activity("HERO_POWER", 0, null, null);
 }
 
 bouton_end_turn.onclick = () => {
-    actions("END_TURN", null, null);
+    activity("END_TURN", null, null, null);
 }
 
 
 const state = () => {
-    fetch("ajax-state.php", {   // Il faut créer cette page et son contrôleur appelle 
-        method: "POST"        // l’API (games/state)
+    fetch("ajax-state.php", {
+        method: "POST"
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data); // contient les cartes/état du jeu.
+            console.log(data);
 
             if (data == "WAITING") {
                 document.querySelector(".my-health").innerHTML = "waiting";
@@ -104,7 +104,7 @@ const state = () => {
 
                 div_mon_board.append(div_erreurs);
 
-                if (nb_secs == 3) {// à chaque 3 secondes
+                if (nb_secs == 3) {
                     nb_secs = 0;
                     div_erreurs.innerHTML = "";
                 }
@@ -115,24 +115,24 @@ const state = () => {
 
             nb_secs += 1;
 
-            setTimeout(state, 1000); // Attendre 1 seconde avant de relancer l’appel
+            setTimeout(state, 1000);
         })
 }
 
 
 window.addEventListener("load", () => {
-    setTimeout(state, 1000); // Appel initial (attendre 1 seconde)
+    setTimeout(state, 1000);
 });
 
 
-function actions(type, uid, targetuid) {
+function activity(typeAction, id_card, uid_card, uid_target_card) {
     let formData = new FormData();
-    formData.append("type", type);
-    formData.append("uid", uid);
-    formData.append("targetuid", targetuid);
-    let div_erreurs = document.querySelector(".message_erreur");
+    formData.append("typeAction", typeAction);
+    formData.append("id_card", id_card);
+    formData.append("uid_card", uid_card);
+    formData.append("uid_target_card", uid_target_card);
 
-    fetch("ajax-actions.php", {
+    fetch("ajax_activity.php", {
         method: "POST",
         body: formData
     })
@@ -195,7 +195,10 @@ function actions(type, uid, targetuid) {
                 div_template.innerHTML = "Pouvoir déjà utilisé pour ce tour";
                 div_erreurs.append(div_template);
             }
-
+            else if (data == "WRONG_TURN") {
+                div_template.innerHTML = "Ce n'est pas votre tour";
+                div_erreurs.append(div_template);
+            }
             console.log(data);
         })
 }
@@ -210,9 +213,9 @@ function creerCartes(div, cartes, data) {
         div_cost.className = "carte-cost";
         let div_img = document.createElement("div");
         div_img.className = "carte-img";
-        if (1 <= id <= 101)
-            div_img.style.backgroundImage = "url(./img/images_persos/perso-"+id+".png)";
-        else
+        if (1 <= id <= 101) // carte qui existe en ce moment
+            div_img.style.backgroundImage = "url(./img/images_persos/perso-" + id + ".png)";
+        else // carte "generique"
             div_img.style.backgroundImage = "url(./img/images_persos/perso-0.png)";
         div_img.style.backgroundRepeat = "round";
         div_img.style.backgroundSize = "cover";
@@ -263,7 +266,7 @@ function creerCartes(div, cartes, data) {
                         "2px 0 yellowgreen, -2px 0 yellowgreen, 0 2px yellowgreen, 0 -2px yellowgreen, 1px 1px yellowgreen, -1px -1px yellowgreen, 1px -1px yellowgreen, -1px 1px yellowgreen";
                 }
                 div_carte.onclick = () => {
-                    actions("PLAY", uid, null);
+                    activity("PLAY", id, uid, null);
                 }
             }
             else if (div == document.querySelector(".my-cards")) {
@@ -279,14 +282,14 @@ function creerCartes(div, cartes, data) {
                     else
                         attack_card_uid = uid;
                 }
-
             }
             else if (div == document.querySelector(".opponent-cards")) {
                 div_carte.onclick = () => {
                     if (attack_card_uid != "") {
                         let target_card_uid = uid;
-                        actions("ATTACK", attack_card_uid, target_card_uid);
+                        activity("ATTACK", null, attack_card_uid, target_card_uid);
                         attack_card_uid = "";
+                        console.log(target_card_uid);
                     }
                 }
             }
@@ -298,7 +301,7 @@ function creerCartes(div, cartes, data) {
 }
 
 let dictNoms = {
-    0: "Ninja",
+    0: "Ninja", // carte "generique"
     1: "Leaf Ninja",
     2: "Choji Akimichi",
     3: "Fukasaku and Shima",
