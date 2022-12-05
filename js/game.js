@@ -33,8 +33,6 @@ const state = () => {
     })
         .then(response => response.json())
         .then(data => {
-            console.log(data);
-
             if (data == "WAITING") {
                 document.querySelector(".my-health").innerHTML = "waiting";
                 document.querySelector(".my-mp-value").innerHTML = "waiting";
@@ -112,7 +110,6 @@ const state = () => {
 
 
             }
-            console.log(attack_card_uid);
 
             nb_secs += 1;
 
@@ -200,7 +197,6 @@ function activity(typeAction, id_card, uid_card, uid_target_card) {
                 div_template.innerHTML = "Ce n'est pas votre tour";
                 div_erreurs.append(div_template);
             }
-            console.log(data);
         })
 }
 
@@ -290,7 +286,6 @@ function creerCartes(div, cartes, data) {
                         let target_card_uid = uid;
                         activity("ATTACK", null, attack_card_uid, target_card_uid);
                         attack_card_uid = "";
-                        console.log(target_card_uid);
                     }
                 }
             }
