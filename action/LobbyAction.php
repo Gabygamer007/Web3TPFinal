@@ -26,11 +26,7 @@
 				$data["key"] = $_SESSION["key"];
 				$data["type"] = $type;
 				$result = parent::callAPI("games/auto-match", $data);
-				if ($result == "CREATED_PVP")
-					header("location:game.php");
-				if ($result == "JOINED_PVP")
-					header("location:game.php");
-				if ($result == "JOINED_TRAINING")
+				if ($result == "CREATED_PVP" or $result == "JOINED_PVP" or $result == "JOINED_TRAINING")
 					header("location:game.php");
 			}
 			
