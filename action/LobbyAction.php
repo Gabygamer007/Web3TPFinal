@@ -23,12 +23,14 @@
 			}
 			
 			if (isset($_POST["PVP"]) or isset($_POST["TRAINING"]) ) {
-				$data["type"] = $type;
 				$data["key"] = $_SESSION["key"];
+				$data["type"] = $type;
 				$result = parent::callAPI("games/auto-match", $data);
-				if ($result == "JOINED_TRAINING")
+				if ($result == "CREATED_PVP")
 					header("location:game.php");
 				if ($result == "JOINED_PVP")
+					header("location:game.php");
+				if ($result == "JOINED_TRAINING")
 					header("location:game.php");
 			}
 			
