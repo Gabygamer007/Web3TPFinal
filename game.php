@@ -9,6 +9,7 @@
 
 <title>Page de jeu</title>
     <link href="css/game.css" rel="stylesheet" >
+    <link rel="icon" href="https://www.pngitem.com/pimgs/m/531-5315843_rasengan-freetoedit-moving-rasengan-hd-png-download.png">
     <script defer src="js/javascript.js"></script>
     <script defer src="js/game.js"></script>
 </head>

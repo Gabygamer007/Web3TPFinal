@@ -9,6 +9,7 @@
 
 <title>Lobby</title>
     <link href="css/lobby.css" rel="stylesheet" >
+    <link rel="icon" href="https://www.pngitem.com/pimgs/m/531-5315843_rasengan-freetoedit-moving-rasengan-hd-png-download.png">
     <script defer src="js/javascript.js"></script>
 </head>
 <body>
@@ -26,8 +27,8 @@
         
 
         <div class="div-iframe">
-        <iframe style="width:700px;height:240px;" onload="applyStyles(this)" 
-        src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION['key'] ?>"> 
+        <iframe style="width:700px;height:562px;" onload="applyStyles(this)" 
+        src="https://magix.apps-de-cours.com/server/#/chat/<?= $_SESSION['key'] ?>/large"> 
         </iframe>
         </div>
         

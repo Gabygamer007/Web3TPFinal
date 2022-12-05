@@ -7,6 +7,7 @@
 	require_once("partial/header.php");
 ?>
     <title>Page d'accueil</title>
+    <link rel="icon" href="https://www.pngitem.com/pimgs/m/531-5315843_rasengan-freetoedit-moving-rasengan-hd-png-download.png">
     <link href="css/login.css" rel="stylesheet" >
 </head>
 <body>

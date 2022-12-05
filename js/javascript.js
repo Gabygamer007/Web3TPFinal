@@ -9,7 +9,7 @@ const applyStyles = iframe => {
 		hideIcons : false,
 		inputBackgroundColor : "orange",
 		inputFontColor : "blue",
-		height : "240px",
+		height : "562px",
 		memberListFontColor : "#ff00dd",
 		memberListBackgroundColor : "white"
 	}
@@ -17,10 +17,4 @@ const applyStyles = iframe => {
 	setTimeout(() => {
 		iframe.contentWindow.postMessage(JSON.stringify(styles), "*");	
     }, 100);
-}
-
-const effacer_valeurs = () => {
-	let div = document.createElement("p");
-	div.innerHTML = "allo";
-	document.querySelector(".container").append(div);
 }

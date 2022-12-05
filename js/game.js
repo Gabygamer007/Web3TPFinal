@@ -80,6 +80,7 @@ const state = () => {
                     attack_card_uid = "";
                     document.querySelector(".time-remaining").innerHTML = data["remainingTurnTime"];
                     document.querySelector(".time-remaining").style.color = "red";
+                    bouton_hero_power.style.backgroundColor = "gray";
                 }
 
                 let cartes_cachees_opponent = document.querySelector(".opponent-hand-cards");
@@ -176,7 +177,7 @@ function activity(typeAction, id_card, uid_card, uid_target_card) {
                 div_erreurs.append(div_template);
             }
             else if (data == "OPPONENT_CARD_HAS_STEALTH") {
-                div_template.innerHTML = "La carte ne peut être attaquée directement tant qu’elle possède « stealth »";
+                div_template.innerHTML = "La carte possède « stealth »";
                 div_erreurs.append(div_template);
             }
             else if (data == "CARD_NOT_FOUND") {
