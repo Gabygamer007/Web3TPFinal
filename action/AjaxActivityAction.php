@@ -1,6 +1,6 @@
 <?php
     require_once("action/CommonAction.php");
-    require_once("action/DAO/CartesPopulairesDAO.php");
+    #require_once("action/DAO/CartesPopulairesDAO.php");
 
     class AjaxActivityAction extends CommonAction {
 
@@ -14,9 +14,9 @@
             $data["uid"] = $_POST["uid_card"];
             $data["targetuid"] = $_POST["uid_target_card"];
             $data["key"] = $_SESSION["key"];
-            if ($data["type"] == "PLAY") {
-                CartesPopulairesDao::addNbFoisJoue($_POST["id_card"]);
-            }
+            #if ($data["type"] == "PLAY") {
+            #    CartesPopulairesDao::addNbFoisJoue($_POST["id_card"]);
+            #}
             $result = parent::callAPI("games/action", $data);
             
             return compact("result");
