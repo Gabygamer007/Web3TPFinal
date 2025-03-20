@@ -1,4 +1,4 @@
-Jeu de cartes en JavaScript et PHP
+# Jeu de cartes en JavaScript et PHP
 
 -Conception et développement d'un jeu de cartes en ligne, en s'appuyant sur HTML, CSS, JavaScript et PHP
 
